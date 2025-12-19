@@ -1,0 +1,343 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  MEMBER
+  MENTOR
+  ADMIN
+  COMPANY
+}
+
+enum UserTier {
+  FREE
+  PRO
+}
+
+enum TeamStatus {
+  FORMING
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+enum ProjectType {
+  COMMUNITY_PROPOSED
+  COMPANY_SPONSORED
+  OPEN_SOURCE
+  SOCIAL_IMPACT
+}
+
+enum ProjectDifficulty {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum ProjectStage {
+  LEARNING_INTEGRATION
+  PLANNING
+  EXECUTION
+  REFLECTION
+  SHOWCASE
+}
+
+enum MembershipStatus {
+  PENDING
+  ACTIVE
+  COMPLETED
+  LEFT
+}
+
+model User {
+  id            String    @id @default(cuid())
+  email         String    @unique
+  name          String?
+  image         String?
+  role          UserRole  @default(MEMBER)
+  tier          UserTier  @default(FREE)
+  bio           String?
+  location      String?
+  linkedIn      String?
+  github        String?
+  twitter       String?
+  
+  // Skills and interests
+  skills        String[]
+  interests     String[]
+  certifications String[]
+  
+  // Availability
+  hoursPerWeek  Int?
+  timezone      String?
+  
+  // Career info
+  careerStage   String? // "bootcamp_grad", "career_changer", etc.
+  lookingForJob Boolean @default(false)
+  
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Relations
+  teamMemberships   TeamMember[]
+  createdTeams      Team[]        @relation("TeamCreator")
+  mentoringSessions MentorSession[] @relation("MentorSessions")
+  mentoredSessions  MentorSession[] @relation("MenteeSessions")
+  portfolioProjects PortfolioProject[]
+  reflections       Reflection[]
+  sentFeedback      Feedback[]    @relation("FeedbackFrom")
+  receivedFeedback  Feedback[]    @relation("FeedbackTo")
+  projects          Project[]     @relation("ProjectCreator")
+  applications      TeamApplication[]
+  
+  @@index([email])
+}
+
+model Team {
+  id          String      @id @default(cuid())
+  name        String
+  description String
+  charter     String?
+  
+  status      TeamStatus  @default(FORMING)
+  maxMembers  Int         @default(6)
+  
+  // Requirements
+  requiredSkills String[]
+  preferredTimezone String?
+  
+  projectId   String?
+  project     Project?    @relation(fields: [projectId], references: [id])
+  
+  creatorId   String
+  creator     User        @relation("TeamCreator", fields: [creatorId], references: [id])
+  
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  
+  // Relations
+  members         TeamMember[]
+  mentorSessions  MentorSession[]
+  checkIns        TeamCheckIn[]
+  
+  @@index([status])
+  @@index([projectId])
+}
+
+model TeamMember {
+  id        String    @id @default(cuid())
+  
+  teamId    String
+  team      Team      @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  role      String    // "Team Lead", "Tech Lead", "Designer", etc.
+  status    MembershipStatus @default(PENDING)
+  
+  joinedAt  DateTime  @default(now())
+  leftAt    DateTime?
+  
+  @@unique([teamId, userId])
+  @@index([teamId])
+  @@index([userId])
+}
+
+model TeamApplication {
+  id          String   @id @default(cuid())
+  
+  teamId      String
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  message     String
+  proposedRole String
+  
+  status      String   @default("pending") // pending, accepted, rejected
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([teamId])
+  @@index([userId])
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  title       String
+  description String
+  
+  type        ProjectType
+  difficulty  ProjectDifficulty
+  stage       ProjectStage @default(LEARNING_INTEGRATION)
+  
+  // Project details
+  techStack       String[]
+  skillsToLearn   String[]
+  estimatedWeeks  Int      @default(10)
+  maxTeams        Int      @default(1)
+  
+  // For company-sponsored projects
+  companyName     String?
+  companyLogo     String?
+  sponsorshipAmount Decimal?
+  
+  // Success metrics
+  successMetrics  String?
+  
+  isActive        Boolean  @default(true)
+  
+  creatorId       String
+  creator         User     @relation("ProjectCreator", fields: [creatorId], references: [id])
+  
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  
+  // Relations
+  teams           Team[]
+  
+  @@index([type])
+  @@index([difficulty])
+  @@index([isActive])
+}
+
+model MentorSession {
+  id          String   @id @default(cuid())
+  
+  mentorId    String
+  mentor      User     @relation("MentorSessions", fields: [mentorId], references: [id])
+  
+  menteeId    String?
+  mentee      User?    @relation("MenteeSessions", fields: [menteeId], references: [id])
+  
+  teamId      String?
+  team        Team?    @relation(fields: [teamId], references: [id])
+  
+  scheduledAt DateTime
+  duration    Int      @default(60) // minutes
+  
+  type        String   // "1-on-1", "team", "code-review"
+  status      String   @default("scheduled") // scheduled, completed, cancelled
+  
+  notes       String?
+  feedback    String?
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([mentorId])
+  @@index([menteeId])
+  @@index([teamId])
+  @@index([scheduledAt])
+}
+
+model PortfolioProject {
+  id          String   @id @default(cuid())
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  title       String
+  description String
+  
+  // Case study
+  problem     String?
+  solution    String?
+  results     String?
+  myRole      String?
+  
+  // Media
+  images      String[]
+  demoUrl     String?
+  githubUrl   String?
+  
+  techStack   String[]
+  skills      String[]
+  
+  // Metrics
+  metrics     Json?
+  
+  teamSize    Int?
+  duration    String?
+  
+  isPublic    Boolean  @default(true)
+  featured    Boolean  @default(false)
+  
+  completedAt DateTime?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([isPublic])
+}
+
+model Reflection {
+  id          String   @id @default(cuid())
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  week        Int
+  
+  // Weekly reflection
+  accomplishments String?
+  challenges      String?
+  learnings       String?
+  nextSteps       String?
+  
+  // Skills assessment
+  skillsGained    String[]
+  confidenceLevel Int? // 1-10
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([userId])
+}
+
+model TeamCheckIn {
+  id          String   @id @default(cuid())
+  
+  teamId      String
+  team        Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  
+  week        Int
+  
+  accomplished String
+  nextGoals    String
+  blockers     String?
+  healthStatus String   @default("green") // green, yellow, red
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([teamId])
+}
+
+model Feedback {
+  id          String   @id @default(cuid())
+  
+  fromUserId  String
+  fromUser    User     @relation("FeedbackFrom", fields: [fromUserId], references: [id])
+  
+  toUserId    String
+  toUser      User     @relation("FeedbackTo", fields: [toUserId], references: [id])
+  
+  type        String   // "peer", "mentor", "360"
+  
+  strengths   String
+  growthAreas String?
+  examples    String?
+  
+  isAnonymous Boolean  @default(false)
+  
+  createdAt   DateTime @default(now())
+  
+  @@index([fromUserId])
+  @@index([toUserId])
+}
