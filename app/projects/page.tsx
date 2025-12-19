@@ -175,7 +175,7 @@ export default function ProjectsPage() {
         {/* Projects Grid */}
         <div className="grid gap-6">
           {mockProjects.map((project) => {
-            const typeInfo = typeConfig[project.type];
+            const typeInfo = typeConfig[project.type as keyof typeof typeConfig];
             const TypeIcon = typeInfo.icon;
             const spotsLeft = project.maxTeams - project.activeTeams;
 
@@ -193,7 +193,7 @@ export default function ProjectsPage() {
                         <TypeIcon className="w-3 h-3" />
                         {typeInfo.label}
                       </span>
-                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${difficultyColors[project.difficulty]}`}>
+                      <span className={`px-3 py-1 rounded-full text-xs font-semibold ${difficultyColors[project.difficulty as keyof typeof difficultyColors]}`}>
                         {project.difficulty}
                       </span>
                     </div>

@@ -174,7 +174,7 @@ export default function TeamsPage() {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <h3 className="text-xl font-bold text-slate-900">{team.name}</h3>
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[team.status]}`}>
+                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${statusColors[team.status as keyof typeof statusColors]}`}>
                       {team.status}
                     </span>
                   </div>
@@ -190,10 +190,10 @@ export default function TeamsPage() {
                 </div>
                 <div className="flex items-center gap-3">
                   <span className="text-sm text-slate-600">
-                    {projectTypeLabels[team.project.type]}
+                    {projectTypeLabels[team.project.type as keyof typeof projectTypeLabels]}
                   </span>
                   <span className="text-slate-400">•</span>
-                  <span className={`px-2 py-1 rounded text-xs font-semibold ${difficultyColors[team.project.difficulty]}`}>
+                  <span className={`px-2 py-1 rounded text-xs font-semibold ${difficultyColors[team.project.difficulty as keyof typeof difficultyColors]}`}>
                     {team.project.difficulty}
                   </span>
                 </div>
