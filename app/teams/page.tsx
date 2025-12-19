@@ -128,9 +128,9 @@ export default function TeamsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-3">Find Your Crew</h1>
+          <h1 className="text-4xl font-bold text-slate-900 mb-3">Find or Start Your Team</h1>
           <p className="text-lg text-slate-600">
-            Join a team, share your skills, and grow together. Every voice matters—your contribution shapes the outcome.
+            Join a team that matches your interests, or start your own and invite others to build something meaningful together. Whether you want to gain experience for your next job or launch your own startup or project, Upepo Teams is your place to grow as both a professional and an entrepreneur.
           </p>
         </div>
 

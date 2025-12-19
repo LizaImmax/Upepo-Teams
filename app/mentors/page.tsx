@@ -136,7 +136,7 @@ export default function MentorsPage() {
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-slate-900 mb-3">Guided by Those Who Believe in You</h1>
           <p className="text-lg text-slate-600">
-            Connect with mentors who see your potential and guide you from learning to doing, with support every step of the way.
+            Connect with mentors who see your potential and guide you from learning to doing, whether your next step is landing a job or launching your own project. Get support for both your career and entrepreneurial journey.
           </p>
         </div>
 

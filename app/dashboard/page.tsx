@@ -51,7 +51,7 @@ export default function DashboardPage() {
         <div className="mb-8">
           <h1 className="text-4xl font-bold text-slate-900 mb-2">Welcome back, John! 👋</h1>
           <p className="text-lg text-slate-600">
-            You're making great progress, Week 5 and building momentum. Your team believes in you, and so do we!
+            You're making great progress, building momentum toward your next big step, whether that's landing a job, launching a project, or starting something of your own. Your team believes in you, and so do we!
           </p>
         </div>
 

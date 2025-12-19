@@ -146,10 +146,10 @@ export default function ProjectsPage() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">\n        {/* Header */}
         <div className="mb-8">
-          <h1 className="text-4xl font-bold text-slate-900 mb-3">Real Projects, Real Impact</h1>
-          <p className="text-lg text-slate-600">
-            Dive in, explore your skills, and see what you can create. Transform theory into action, one project at a time.
-          </p>
+            <h1 className="text-4xl font-bold text-slate-900 mb-3">Real Projects, Real Impact</h1>
+            <p className="text-lg text-slate-600 mb-6">
+              Dive in, explore your skills, and see what you can create. Every project is a chance to build your portfolio, land a job, or launch your own venture. Transform theory into action, one project at a time, whether your goal is employment or entrepreneurship.
+            </p>
         </div>
 
         {/* Filters */}

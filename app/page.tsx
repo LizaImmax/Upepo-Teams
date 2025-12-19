@@ -191,7 +191,7 @@ export default function Home() {
               Your Skills, Your Growth, Your Community
             </h2>
             <p className="text-xl text-slate-600">
-              Every voice matters—your contribution shapes the outcome
+              Every voice matters, your contribution shapes the outcome
             </p>
           </div>
 
@@ -215,7 +215,7 @@ export default function Home() {
               {
                 icon: <Briefcase className="w-8 h-8" />,
                 title: "Showcase Your Growth",
-                desc: "Build a portfolio that tells your story—from challenge to solution to real results.",
+                desc: "Build a portfolio that tells your story, from challenge to solution to real results.",
               },
             ].map((feature) => (
               <div key={feature.title} className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
@@ -351,7 +351,7 @@ export default function Home() {
             Ready to Step Into Your Full Potential?
           </h2>
           <p className="text-xl text-white/90 mb-8">
-            Join a community where learning meets doing—where your skills transform into real impact
+            Join a community where learning meets doing, where your skills transform into real impact
           </p>
           <Link 
             href="/auth/signup"
@@ -363,54 +363,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-upepo-blue to-upepo-teal rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">U</span>
-                </div>
-                <span className="text-xl font-bold">Upepo Teams</span>
-              </div>
-              <p className="text-slate-400">
-                Where Learning Meets Doing
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Platform</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/teams">Browse Teams</Link></li>
-                <li><Link href="/projects">Projects</Link></li>
-                <li><Link href="/mentors">Find Mentors</Link></li>
-                <li><Link href="/portfolio">Portfolios</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/about">About</Link></li>
-                <li><Link href="/blog">Blog</Link></li>
-                <li><Link href="/careers">Careers</Link></li>
-                <li><Link href="/contact">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/docs">Documentation</Link></li>
-                <li><Link href="/guides">Guides</Link></li>
-                <li><Link href="/faq">FAQ</Link></li>
-                <li><Link href="/support">Support</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>&copy; {new Date().getFullYear()} Upepo Teams. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

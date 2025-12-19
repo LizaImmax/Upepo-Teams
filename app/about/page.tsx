@@ -43,8 +43,8 @@ export default function AboutPage() {
           </h1>
           <p className="text-xl text-slate-600 leading-relaxed">
             Your skills deserve to shine. We help you transform theory into action, 
-            collaborate with incredible peers, and build a portfolio that opens doors, all 
-            while growing with mentors who believe in your potential.
+            collaborate with incredible peers, and build a portfolio that opens doors, whether that's landing a great job or launching your own venture. 
+            Grow with mentors who believe in your potential, and gain the confidence to pursue both employment and entrepreneurship.
           </p>
         </div>
       </section>
@@ -131,7 +131,7 @@ export default function AboutPage() {
               <h3 className="text-xl font-bold mb-3">🚪 The Experience Paradox</h3>
               <p className="text-slate-300 mb-3">
                 Every opportunity asks for experience, but how do you get experience when no one 
-                gives you the chance? You're ready to contribute, ready to learn on the job—you 
+                gives you the chance? You're ready to contribute, ready to learn on the job, you 
                 just need someone to see your potential and give you that first real shot.
               </p>
               <p className="text-slate-400 text-sm italic">
@@ -145,7 +145,7 @@ export default function AboutPage() {
                 Your potential deserves a place to grow. We create the space where your skills 
                 become real experience, your peers become your collaborators, and your work 
                 becomes proof of what you can achieve. Together, we bridge the gap between 
-                learning and doing—because you're ready, and we see it.
+                learning and doing, because you're ready, and we see it.
               </p>
             </div>
           </div>
@@ -230,7 +230,7 @@ export default function AboutPage() {
               What Makes Us Different
             </h2>
             <p className="text-xl text-slate-600">
-              We're not here to teach—we're here to build with you
+              We're not here to teach, we're here to build with you
             </p>
           </div>
 
@@ -253,7 +253,7 @@ export default function AboutPage() {
                 <li>• Build alongside teammates who push you forward</li>
                 <li>• Work with mentors who've been where you want to go</li>
                 <li>• Create a portfolio that tells your story with proof</li>
-                <li>• Walk into opportunities with confidence—because you've already done the work</li>
+                <li>• Walk into opportunities with confidence, because you've already done the work</li>
               </ul>
             </div>
           </div>
@@ -263,7 +263,7 @@ export default function AboutPage() {
               <strong className="text-slate-900">Here's the truth:</strong> You don't need another 
               course or credential. You need a space where your skills become visible, where your 
               growth is celebrated, and where people believe in what you can achieve. That's what 
-              we've built—and we can't wait to build with you.
+              we've built, and we can't wait to build with you.
             </p>
           </div>
         </div>
@@ -282,7 +282,7 @@ export default function AboutPage() {
           <div className="prose prose-lg max-w-none">
             <div className="bg-white rounded-xl p-8 shadow-sm border border-slate-200">
               <p className="text-slate-600 mb-6 text-lg">
-                <strong className="text-slate-900">Upepo</strong> means "wind" in Swahili—a force 
+                <strong className="text-slate-900">Upepo</strong> means "wind" in Swahili, a force 
                 that lifts and propels forward. We saw talented people stuck between learning and 
                 earning, with skills but no proof. The missing piece wasn't more courses or 
                 certifications. It was the space to build real projects with real teams.
@@ -292,7 +292,7 @@ export default function AboutPage() {
                 So we created it. Today, <strong>500+ teams</strong> have built real products, 
                 <strong> 70% of members have landed jobs</strong> within 6 months, and we're just 
                 getting started. Every team that launches, every portfolio built, every career 
-                transformed—that's the wind we create.
+                transformed, that's the wind we create.
               </p>
             </div>
           </div>
@@ -304,7 +304,7 @@ export default function AboutPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Built by the Community</h2>
           <p className="text-xl text-slate-300 mb-12">
-            Upepo Teams is run by people who've walked the path themselves—bootcamp 
+            Upepo Teams is run by people who've walked the path themselves, bootcamp 
             grads, career changers, and self-taught developers who've made it and want 
             to help others do the same.
           </p>
@@ -392,7 +392,7 @@ export default function AboutPage() {
                 {
                   name: "Sarah M.",
                   role: "From Bootcamp to DevOps Engineer",
-                  quote: "Upepo Teams gave me what my bootcamp couldn't—real project experience. I landed my first DevOps role 4 months after joining.",
+                  quote: "Upepo Teams gave me what my bootcamp couldn't, real project experience. I landed my first DevOps role 4 months after joining.",
                 },
                 {
                   name: "James K.",
@@ -437,54 +437,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-12 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-4 gap-8 mb-8">
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-br from-upepo-blue to-upepo-teal rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xl">U</span>
-                </div>
-                <span className="text-xl font-bold">Upepo Teams</span>
-              </div>
-              <p className="text-slate-400">
-                Where Learning Meets Doing
-              </p>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Platform</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/teams" className="hover:text-white">Browse Teams</Link></li>
-                <li><Link href="/projects" className="hover:text-white">Projects</Link></li>
-                <li><Link href="/mentors" className="hover:text-white">Find Mentors</Link></li>
-                <li><Link href="/portfolio" className="hover:text-white">Portfolios</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Company</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/about" className="hover:text-white">About</Link></li>
-                <li><Link href="/blog" className="hover:text-white">Blog</Link></li>
-                <li><Link href="/careers" className="hover:text-white">Careers</Link></li>
-                <li><Link href="/contact" className="hover:text-white">Contact</Link></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2 text-slate-400">
-                <li><Link href="/docs" className="hover:text-white">Documentation</Link></li>
-                <li><Link href="/guides" className="hover:text-white">Guides</Link></li>
-                <li><Link href="/faq" className="hover:text-white">FAQ</Link></li>
-                <li><Link href="/support" className="hover:text-white">Support</Link></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>&copy; {new Date().getFullYear()} Upepo Teams. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
     </div>
   );
 }

@@ -2,7 +2,7 @@
 
 **From Certified to Career-Ready**
 
-Upepo Teams is a structured team collaboration platform that bridges the gap between learning and professional practice. Join teams, work on real-world projects with mentorship, build portfolios, and launch your career.
+Upepo Teams is a structured team collaboration platform that bridges the gap between learning and professional practice. Join teams, work on real-world projects with mentorship, build portfolios, and launch your career or start your own venture. Whether your goal is employment or entrepreneurship, Upepo Teams empowers you to succeed.
 
 ## 🎯 Vision
 
